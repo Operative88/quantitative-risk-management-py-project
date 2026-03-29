@@ -1,6 +1,7 @@
 # Quantitative risk management project in python
 
 ![Pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
+![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Operative88/quantitative-risk-management-py-project/tests.yml?style=for-the-badge)
 ![Poetry](https://img.shields.io/badge/poetry-60A5FA?style=for-the-badge&logo=poetry&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/numpy-013243?style=for-the-badge&logo=numpy&logoColor=white)
