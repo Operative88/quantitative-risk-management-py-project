@@ -27,3 +27,10 @@ class MarketDataLoader:
         if "Time series (daily)" not in json_data:
             error_msg = json_data.get("Note") or json_data.get("Information") or "Nieznany blad API"
             raise ValueError(f"blad dla {ticker}: {error_msg}")
+
+        series = json_data("Time Series (Daily)")
+
+        adj_close = {
+            date: float(values["5. adjusted close"]) for date, values in series.items()
+        }
+        s = pd.Series(adj_close, name=ticker)
