@@ -34,3 +34,9 @@ class MarketDataLoader:
             date: float(values["5. adjusted close"]) for date, values in series.items()
         }
         s = pd.Series(adj_close, name=ticker)
+        s.index = pd.to_datetime(s.index)
+        s = s.sort_index()
+
+        # Filtrujemy po zakresie dat
+        return s.loc[start_date:end_date]
+
