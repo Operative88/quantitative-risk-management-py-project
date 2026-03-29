@@ -15,3 +15,12 @@
 
 ### • Volatility analysis
     EWMA model implementation (Exponentially Weighted Moving Average)
+
+### Project architecture
+| Module | Functionality |
+|---|---|
+| `data_loader/` | Downloading data from API (`Alpha Vantage`). |
+| `stats_engine/` | Calculation of covariance and correlation matrices and normality tests. |
+| `risk_models/` | Classes for Monte Carlo simulation and VaR estimation. |
+| `visualizer/` | Generating interactive charts with `Plotly` or `Seaborn`. |
+| `reports/` | Automatic generation PDF reports with portfolio risk summary |
