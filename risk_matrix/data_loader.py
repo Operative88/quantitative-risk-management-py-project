@@ -12,3 +12,16 @@ class MarketDataLoader:
         self.tickers = tickers
         self.api_key = api_key
         self.data: pd.DataFrame | None = None
+    
+    def fetch_single(self, ticker: str, start_date: str, end_date: str) -> pd.Series:
+        """Pobiera dane dla jednego tickera z Alpha Vantage"""
+        params = {
+            "function": "TIME_SERIES_DAILY_ADJUSTED",
+            "symbol": ticker,
+            "outputsize": "full",
+            "apikey": self.api_key,
+        }
+        response = requests.get(self.BASE_URL, params=params)
+        response.raise_for_status()
+        json_data = response.json()
+        
