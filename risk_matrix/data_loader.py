@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as pd
 import requests
 import os
-from dotenv import load_load_dotenv
+from dotenv import load_dotenv
 
 load_dotenv()
 
