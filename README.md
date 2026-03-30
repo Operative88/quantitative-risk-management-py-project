@@ -27,3 +27,5 @@
 | `risk_models/` | Classes for Monte Carlo simulation and VaR estimation. |
 | `visualizer/` | Generating interactive charts with `Plotly` or `Seaborn`. |
 | `reports/` | Automatic generation PDF reports with portfolio risk summary |
+
+aktualizacja
