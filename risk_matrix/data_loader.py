@@ -1,8 +1,13 @@
 import pandas as pd
 import numpy as pd
 import requests
+import os
+from dotenv import load_load_dotenv
 
-ALPHA_VANTAGE_API_KEY = ""
+load_dotenv()
+
+api_key = os.getenv("ALPHA_VANTAGE_API_KEY")
+
 
 class MarketDataLoader:
     """Klasa do pobierania i wstępnego pobierania danych giełdowych"""
