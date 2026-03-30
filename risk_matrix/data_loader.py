@@ -40,3 +40,4 @@ class MarketDataLoader:
         # Filtrujemy po zakresie dat
         return s.loc[start_date:end_date]
 
+def fetch_data(self, start_date: str, end_date: str) -> pd.DataFrame:

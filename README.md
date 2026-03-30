@@ -28,4 +28,4 @@
 | `visualizer/` | Generating interactive charts with `Plotly` or `Seaborn`. |
 | `reports/` | Automatic generation PDF reports with portfolio risk summary |
 
-aktualizacja
+aktualizacja:
