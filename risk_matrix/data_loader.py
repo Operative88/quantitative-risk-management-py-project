@@ -57,3 +57,14 @@ def fetch_data(self, start_date: str, end_date: str) -> pd.DataFrame:
     except Exception as e:
         print(f"błąd podzas pobierania danych: {e}")
         return pd.DataFrame()
+
+def calculate_log_returns(self) -> pd.DataFrame:
+    """
+    oblicza logarytmiczne stopy zwrotu wedlug
+    r_t = ln(P_t / P_{t-1})
+    """
+    if self.data is None or self.data.empty:
+        raise ValueError("Brak danych. Najpierw wywołaj fetch_data().")
+    
+    log_returns = np.log(self.data / self.data.shift(1).dropna())
+    return log_returns
