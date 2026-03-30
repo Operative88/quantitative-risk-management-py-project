@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api_key = os.getenv("ALPHA_VANTAGE_API_KEY")
+api_key_os = os.getenv("ALPHA_VANTAGE_API_KEY")
 
 
 class MarketDataLoader:
     """Klasa do pobierania i wstępnego pobierania danych giełdowych"""
     BASE_URL = "https://www.alphavantage.co/query"
 
-    def __init__(self, tickers: list[str], api_key: str = ALPHA_VANTAGE_API_KEY):
+    def __init__(self, tickers: list[str], api_key: str = api_key_os):
         self.tickers = tickers
         self.api_key = api_key
         self.data: pd.DataFrame | None = None
