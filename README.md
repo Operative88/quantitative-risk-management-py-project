@@ -29,3 +29,4 @@
 | `reports/` | Automatic generation PDF reports with portfolio risk summary |
 
 aktualizacja:
+1.
