@@ -49,3 +49,6 @@ def fetch_data(self, start_date: str, end_date: str) -> pd.DataFrame:
             frames[ticker] = self.fetch_single(ticker, start_date, end_date)
         self.data = pd.DataFrame(frames)
         return self.data
+    except Exception as e:
+        print(f"błąd podzas pobierania danych: {e}")
+        return pd.DataFrame()
