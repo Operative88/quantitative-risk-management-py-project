@@ -68,3 +68,11 @@ def calculate_log_returns(self) -> pd.DataFrame:
     
     log_returns = np.log(self.data / self.data.shift(1).dropna())
     return log_returns
+
+def get_summary_stats(self) -> pd.DataFrame:
+    """Zwraca podstawowe statystyki opisowe dla pobranych aktywow"""
+    returns = self.calculate_log_returns()
+    summary = returns.aggregate(['mean', 'std', 'skew', 'kurtosis']).T
+    summary['annual_mean'] = summary['mean'] * 252
+    summary['annual_std'] = summary['std'] * np.sqrt(252)
+    return summary
