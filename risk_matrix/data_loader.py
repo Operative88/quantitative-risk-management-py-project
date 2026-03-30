@@ -41,3 +41,11 @@ class MarketDataLoader:
         return s.loc[start_date:end_date]
 
 def fetch_data(self, start_date: str, end_date: str) -> pd.DataFrame:
+    """Pobiera skorygowane ceny zamknięcia z Alpha Vantage"""
+    print(f'pobieranie danych dla: {', '.join(self.tickers)}...')
+    frames: dict[str, pd.Series] = {}
+    try:
+        for ticker in self.tickers:
+            frames[ticker] = self.fetch_single(ticker, start_date, end_date)
+        self.data = pd.DataFrame(frames)
+        return self.data
