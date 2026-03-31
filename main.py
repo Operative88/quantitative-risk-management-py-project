@@ -19,5 +19,5 @@ def main():
     print("\n ostatnie 5 dni zwrotów logarytmicznych:")
     print(returns.tail())
 
-    if __name__=="__main__":
-        main()
+if __name__=="__main__":
+    main()
