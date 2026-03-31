@@ -66,7 +66,7 @@ class MarketDataLoader:
         if self.data is None or self.data.empty:
             raise ValueError("Brak danych. Najpierw wywołaj fetch_data().")
     
-        log_returns = np.log(self.data / self.data.shift(1).dropna())
+        log_returns = np.log(self.data / self.data.shift(1)).dropna()
         return log_returns
 
     def get_summary_stats(self) -> pd.DataFrame:
