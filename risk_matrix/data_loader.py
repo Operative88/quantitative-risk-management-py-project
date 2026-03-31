@@ -45,34 +45,34 @@ class MarketDataLoader:
         # Filtrujemy po zakresie dat
         return s.loc[start_date:end_date]
 
-def fetch_data(self, start_date: str, end_date: str) -> pd.DataFrame:
-    """Pobiera skorygowane ceny zamknięcia z Alpha Vantage"""
-    print(f'pobieranie danych dla: {', '.join(self.tickers)}...')
-    frames: dict[str, pd.Series] = {}
-    try:
-        for ticker in self.tickers:
-            frames[ticker] = self.fetch_single(ticker, start_date, end_date)
-        self.data = pd.DataFrame(frames)
-        return self.data
-    except Exception as e:
-        print(f"błąd podzas pobierania danych: {e}")
-        return pd.DataFrame()
+    def fetch_data(self, start_date: str, end_date: str) -> pd.DataFrame:
+        """Pobiera skorygowane ceny zamknięcia z Alpha Vantage"""
+        print(f'pobieranie danych dla: {', '.join(self.tickers)}...')
+        frames: dict[str, pd.Series] = {}
+        try:
+            for ticker in self.tickers:
+                frames[ticker] = self.fetch_single(ticker, start_date, end_date)
+            self.data = pd.DataFrame(frames)
+            return self.data
+        except Exception as e:
+            print(f"błąd podzas pobierania danych: {e}")
+            return pd.DataFrame()
 
-def calculate_log_returns(self) -> pd.DataFrame:
-    """
-    oblicza logarytmiczne stopy zwrotu wedlug
-    r_t = ln(P_t / P_{t-1})
-    """
-    if self.data is None or self.data.empty:
-        raise ValueError("Brak danych. Najpierw wywołaj fetch_data().")
+    def calculate_log_returns(self) -> pd.DataFrame:
+        """
+        oblicza logarytmiczne stopy zwrotu wedlug
+        r_t = ln(P_t / P_{t-1})
+        """
+        if self.data is None or self.data.empty:
+            raise ValueError("Brak danych. Najpierw wywołaj fetch_data().")
     
-    log_returns = np.log(self.data / self.data.shift(1).dropna())
-    return log_returns
+        log_returns = np.log(self.data / self.data.shift(1).dropna())
+        return log_returns
 
-def get_summary_stats(self) -> pd.DataFrame:
-    """Zwraca podstawowe statystyki opisowe dla pobranych aktywow"""
-    returns = self.calculate_log_returns()
-    summary = returns.aggregate(['mean', 'std', 'skew', 'kurtosis']).T
-    summary['annual_mean'] = summary['mean'] * 252
-    summary['annual_std'] = summary['std'] * np.sqrt(252)
-    return summary
+    def get_summary_stats(self) -> pd.DataFrame:
+        """Zwraca podstawowe statystyki opisowe dla pobranych aktywow"""
+        returns = self.calculate_log_returns()
+        summary = returns.aggregate(['mean', 'std', 'skew', 'kurtosis']).T
+        summary['annual_mean'] = summary['mean'] * 252
+        summary['annual_std'] = summary['std'] * np.sqrt(252)
+        return summary
