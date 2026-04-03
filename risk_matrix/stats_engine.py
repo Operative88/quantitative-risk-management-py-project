@@ -30,3 +30,24 @@ class RiskEngine:
 
         var = abs(mu + z_score * sigma) * portfolio_value
         return var
+
+        def calculate_portfolio_var(self, weights: np.array, confidence_level: float = 0.95, portfolio_value: float = 1000000)
+            """
+            Oblicza Var dla całego portfela uwzględniajac korelacje miedzy aktywami
+        
+            """
+            if not np.isclose(weights.sum(), 1.0):
+                raise ValueError("Suma wag portfela musi wynosic 1.0")
+            
+            #sredni zwrot portfela
+            porftolio_mu = np.sum(self.returns.mean() * weights)
+
+            #zmiennosc portfela (uzywajac macierzy kowariancji)
+            cov_matrix = self.returns.cov()
+            portoflio_variance = np.dot(weights.T, np.dot(cov_matrix, weights))
+            portoflio_sigma = np.sqrt(portfolio_variance)
+
+            z_score = norm.ppf(1 - confidence_level)
+
+            porftolio_var = abs(portfolio_mu + z_score *portfolio_sigma) * portfolio_value
+            return portfolio_var
