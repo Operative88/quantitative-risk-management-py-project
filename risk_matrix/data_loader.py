@@ -2,9 +2,6 @@ import pandas as pd
 import numpy as np
 import yfinance as yf
 
-
-
-
 class MarketDataLoader:
     """Klasa do pobierania i wstępnego pobierania danych giełdowych"""
    
@@ -32,4 +29,18 @@ class MarketDataLoader:
             print(f"błąd podczas pobierania danych: {e}")
             return pd.DataFrame()
         
+        def calculate_log_returns(self) -> pd.DataFrame:
+            """
+            oblicza logarytmiczne stopy zwrotu wedlug
+            r_t = ln(P_t / P_{t-1})
+            """
+            if self.data is None or self.data.empty:
+                raise ValueError("Brak danych. Najpierw wywołaj fetch_data().")
+            
+            #wektorowe obliczanie zwrotów
+            log_returns = np.log(self.data / self.data.shift(1)).dropna()
+            return log_returns
         
+        def get_summary_stats(self) -> pd.DataFrame:
+            
+            
