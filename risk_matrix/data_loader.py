@@ -29,7 +29,7 @@ class MarketDataLoader:
         response = requests.get(self.BASE_URL, params=params)
         response.raise_for_status()
         json_data = response.json()
-        if "Time Series (daily)" not in json_data:
+        if "Time Series (Daily)" not in json_data:
 
             error_msg = (json_data.get("Note") or 
             json_data.get("Information") or
