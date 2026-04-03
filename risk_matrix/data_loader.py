@@ -29,6 +29,8 @@ class MarketDataLoader:
         response = requests.get(self.BASE_URL, params=params)
         response.raise_for_status()
         json_data = response.json()
+        print(f"z API przyszło: {ticker}: {json_data}")
+        
         if "Time Series (Daily)" not in json_data:
 
             error_msg = (json_data.get("Note") or 
