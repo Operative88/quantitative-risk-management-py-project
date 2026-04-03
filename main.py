@@ -6,8 +6,11 @@ def main():
 
     loader = MarketDataLoader(assets)
 
-    loader.fetch_data(start_date="2026-01-01", end_date="2026-03-31") #pobieranie danych
-
+    df = loader.fetch_data(start_date="2026-01-01", end_date="2026-03-31") #pobieranie danych
+    if df.empty:
+        print("błąd podczas pobierania danych. Przerywam działanie")
+        return
+    
     print("\n statystyki portfela")
 
     stats = loader.get_summary_stats()
