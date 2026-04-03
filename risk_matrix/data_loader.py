@@ -23,7 +23,7 @@ class MarketDataLoader:
         params = {
             "function": "TIME_SERIES_DAILY",
             "symbol": ticker,
-            "outputsize": "full",
+            "outputsize": "compact",
             "apikey": self.api_key,
         }
         response = requests.get(self.BASE_URL, params=params)
